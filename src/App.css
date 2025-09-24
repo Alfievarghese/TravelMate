@@ -1,1 +1,298 @@
-Replace with your card Alfie
+/* -------------------------------------------------- */
+/* 1. General & Base Styles                         */
+/* -------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%); /* Subtle gradient for depth */
+  color: #333333; /* Dark charcoal text */
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* -------------------------------------------------- */
+/* 2. Main App Layout & Typography                  */
+/* -------------------------------------------------- */
+.app-container {
+  max-width: 900px; /* Slightly wider for better breathing room */
+  margin: 0 auto;
+  padding: 60px 24px; /* Increased top padding for more header space */
+  text-align: center;
+}
+
+.app-logo {
+  width: 160px; /* Slightly larger logo */
+  height: auto;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 90, 156, 0.1)); /* Subtle shadow for logo pop */
+  transition: transform 0.3s ease;
+}
+
+.app-logo:hover {
+  transform: scale(1.05); /* Gentle hover animation */
+}
+
+.app-container h1 {
+  font-size: 3rem; /* Larger for impact (48px) */
+  font-weight: 800; /* Bolder weight */
+  background: linear-gradient(135deg, #005A9C 0%, #007BFF 100%); /* Gradient text for vibrancy */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  margin-bottom: 12px; /* More space below */
+  letter-spacing: -0.02em; /* Subtle letter spacing for modernity */
+}
+
+.app-container p {
+  text-align: center;
+  font-size: 1.25rem; /* Slightly larger (20px) */
+  max-width: 650px;
+  margin: 0 auto 48px auto; /* More bottom margin */
+  color: #666; /* Softer grey for description */
+  font-weight: 400;
+}
+
+/* -------------------------------------------------- */
+/* 3. Search Form                                   */
+/* -------------------------------------------------- */
+.search-form {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 60px; /* More space below form */
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent white for subtle backdrop */
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* Enhanced shadow for elevation */
+  backdrop-filter: blur(10px); /* Modern blur effect if supported */
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 16px 20px 16px 48px; /* Left padding for potential icon */
+  font-size: 1.1rem; /* Slightly larger text */
+  border: 2px solid #E9ECEF; /* Thicker, softer border */
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+  background: #FFFFFF;
+  position: relative;
+}
+
+.search-input::placeholder {
+  color: #999;
+  font-weight: 400;
+}
+
+/* Optional: Add a search icon via pseudo-element (assumes no actual icon in HTML) */
+.search-input::before {
+  content: '🔍'; /* Emoji icon; replace with SVG if preferred */
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  opacity: 0.6;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #005A9C;
+  box-shadow: 0 0 0 4px rgba(0, 90, 156, 0.15), 0 4px 12px rgba(0, 90, 156, 0.1); /* Enhanced focus ring */
+  transform: translateY(-2px); /* Subtle lift on focus */
+}
+
+.search-button {
+  padding: 16px 32px; /* Larger padding for better click area */
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #005A9C 0%, #007BFF 100%); /* Gradient for button vibrancy */
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 90, 156, 0.2); /* Initial shadow */
+  position: relative;
+  overflow: hidden;
+}
+
+.search-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.search-button:hover::before {
+  left: 100%;
+}
+
+.search-button:hover {
+  background: linear-gradient(135deg, #004B80 0%, #0066CC 100%); /* Darker gradient on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 90, 156, 0.3);
+}
+
+.search-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 90, 156, 0.2);
+}
+
+/* -------------------------------------------------- */
+/* 4. Results Section                               */
+/* -------------------------------------------------- */
+.results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Slightly more gap between cards */
+}
+
+.result-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px; /* More padding for spacious feel */
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%); /* Subtle gradient in cards */
+  border-radius: 16px; /* Larger radius for softer look */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); /* Softer, larger shadow */
+  transition: all 0.3s ease-in-out;
+  text-align: left;
+  border: 1px solid rgba(0, 90, 156, 0.05); /* Subtle border for definition */
+  position: relative;
+  overflow: hidden;
+}
+
+.result-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #005A9C, #007BFF); /* Colored left accent bar */
+}
+
+.result-card:hover {
+  transform: translateY(-6px) scale(1.02); /* Enhanced hover: lift and slight scale */
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(135deg, #FFFFFF 0%, #FCFCFC 100%);
+}
+
+.result-card-mode {
+  font-size: 1.4rem; /* Larger mode text */
+  font-weight: 700;
+  color: #005A9C;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Optional: Add mode icons via pseudo-elements (e.g., for flight/hotel) */
+.result-card-mode::before {
+  content: '✈️'; /* Example for flight; customize per card if HTML allows */
+  font-size: 1.5rem;
+}
+
+.result-card-details {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* More gap for details */
+  text-align: right;
+}
+
+.result-card-details div {
+  display: flex;
+  flex-direction: column;
+  min-width: 100px; /* Ensure consistent width */
+}
+
+.result-card-details .label {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 4px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em; /* Uppercase labels for emphasis */
+}
+
+.result-card-details .value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* -------------------------------------------------- */
+/* 5. Responsive Design                             */
+/* -------------------------------------------------- */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 40px 16px;
+  }
+
+  .app-container h1 {
+    font-size: 2.5rem; /* 40px on tablet */
+  }
+
+  .app-container p {
+    font-size: 1.125rem;
+  }
+
+  .search-form {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    margin-bottom: 40px;
+  }
+
+  .search-input {
+    padding: 16px 20px 16px 48px;
+  }
+
+  .search-button {
+    align-self: stretch; /* Full width on mobile */
+  }
+
+  .result-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .result-card-details {
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    gap: 24px;
+  }
+
+  .result-card-details div {
+    min-width: auto;
+    flex: 1;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container h1 {
+    font-size: 2rem; /* 32px on small mobile */
+  }
+
+  .app-logo {
+    width: 120px;
+  }
+
+  .result-card-mode {
+    font-size: 1.25rem;
+  }
+}
